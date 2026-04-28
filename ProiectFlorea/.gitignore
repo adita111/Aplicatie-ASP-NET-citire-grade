@@ -1,0 +1,49 @@
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+
+# ASP.NET / .NET
+*.rsuser
+*.pdb
+*.cache
+*.log
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Entity Framework / SQLite local database
+Data/*.db
+Data/*.db-shm
+Data/*.db-wal
+Data/*.sqlite
+Data/*.sqlite-shm
+Data/*.sqlite-wal
+
+# User secrets / local config
+secrets.json
+appsettings.Development.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
