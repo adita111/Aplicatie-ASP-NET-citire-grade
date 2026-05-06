@@ -15,6 +15,12 @@ namespace ProiectFlorea.Models
         [JsonPropertyName("voltage_mv")]
         public int VoltageMv { get; set; }
 
+        [JsonPropertyName("latitude")]
+        public double Latitude { get; set; }
+
+        [JsonPropertyName("longitude")]
+        public double Longitude { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
