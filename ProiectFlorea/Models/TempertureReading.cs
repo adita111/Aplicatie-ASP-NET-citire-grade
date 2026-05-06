@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ProiectFlorea.Models
 {
@@ -7,9 +8,11 @@ namespace ProiectFlorea.Models
         public int Id { get; set; }
 
         [Required]
+        [JsonPropertyName("temperature_c")]
         public double TemperatureC { get; set; }
 
         [Required]
+        [JsonPropertyName("voltage_mv")]
         public int VoltageMv { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

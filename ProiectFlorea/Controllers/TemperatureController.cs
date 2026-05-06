@@ -26,5 +26,10 @@ namespace ProiectFlorea.Controllers
 
             return Ok(new { message = "Saved" });
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_context.TemperatureReadings.ToList());
+        }
     }
 }
