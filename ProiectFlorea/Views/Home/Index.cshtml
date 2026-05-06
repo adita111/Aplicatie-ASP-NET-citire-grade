@@ -1,8 +1,70 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<ProiectFlorea.Models.TemperatureReading>
+
+@{
+    ViewData["Title"] = "Temperature Chart";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Temperature readings</h1>
+    <p>Date primite de la placa FRDM-MCXN947.</p>
 </div>
+
+<canvas id="temperatureChart" height="120"></canvas>
+
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Temperature °C</th>
+            <th>Voltage mV</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderByDescending(x => x.CreatedAt))
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TemperatureC</td>
+                <td>@item.VoltageMv</td>
+                <td>@item.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = [
+    @foreach (var item in Model)
+    {
+        @:"@item.CreatedAt.ToString("HH:mm:ss")",
+    }
+    ];
+
+    const temperatureData = [
+    @foreach (var item in Model)
+    {
+        @:@item.TemperatureC,
+    }
+    ];
+
+    const ctx = document.getElementById('temperatureChart');
+
+    new Chart(ctx, {
+    type: 'line',
+    data: {
+    labels: labels,
+    datasets: [{
+    label: 'Temperature °C',
+    data: temperatureData,
+    borderWidth: 2,
+    tension: 0.2
+    }]
+    },
+    options: {
+    responsive: true
+    }
+    });
+</script>
