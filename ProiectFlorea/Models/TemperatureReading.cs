@@ -9,11 +9,11 @@ namespace ProiectFlorea.Models
 
         [Required]
         [JsonPropertyName("temperature_c")]
-        public double TemperatureC { get; set; }
+        public double? TemperatureC { get; set; }
 
         [Required]
         [JsonPropertyName("voltage_mv")]
-        public int VoltageMv { get; set; }
+        public int? VoltageMv { get; set; }
 
         [JsonPropertyName("latitude")]
         public double Latitude { get; set; }
