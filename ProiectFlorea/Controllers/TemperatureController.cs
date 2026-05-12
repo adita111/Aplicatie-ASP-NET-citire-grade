@@ -18,6 +18,9 @@ namespace ProiectFlorea.Controllers
         [HttpPost]
         public IActionResult PostTemperature([FromBody] TemperatureReading data)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             if (data == null)
                 return BadRequest();
 
@@ -26,6 +29,7 @@ namespace ProiectFlorea.Controllers
 
             return Ok(new { message = "Saved" });
         }
+
         [HttpGet]
         public IActionResult GetAll()
         {
